@@ -1,0 +1,6 @@
+{
+  "name": "Aurelia Bloom",
+  "description": "Floristería botánica de alta gama y diseño artesanal consciente. El arte de regalar emociones.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

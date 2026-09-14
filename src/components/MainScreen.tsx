@@ -430,7 +430,7 @@ export const MainScreen: React.FC<MainScreenProps> = ({
                 </div>
                 <div>
                   <p className="font-ui text-sm font-semibold text-[#1e1b19]">Email</p>
-                  <p className="font-editorial text-sm text-[#564147]">holaaureliabloom@gmail.com</p>
+                  <p className="font-editorial text-sm text-[#564147]">helloaureliabloom@gmail.com</p>
                 </div>
               </div>
 
@@ -572,7 +572,7 @@ export const MainScreen: React.FC<MainScreenProps> = ({
 </button>
 {sendError && (
   <p className="text-sm text-red-600 mt-3 text-center">
-    No pudimos enviar tu mensaje. Escríbenos directo a holaaureliabloom@gmail.com
+    No pudimos enviar tu mensaje. Escríbenos directo a helloaureliabloom@gmail.com
   </p>
 )}
                 >

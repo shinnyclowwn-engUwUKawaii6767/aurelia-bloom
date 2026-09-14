@@ -65,7 +65,7 @@ export const MainScreen: React.FC<MainScreenProps> = ({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          access_key: 'e97b5b45-710f-4461-8b19-e8e3c88559c2',
           subject: `Aurelia Bloom · ${contactData.asunto}`,
           from_name: contactData.nombre,
           email: contactData.email,

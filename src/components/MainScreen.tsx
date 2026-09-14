@@ -37,10 +37,52 @@ export const MainScreen: React.FC<MainScreenProps> = ({
     mensaje: '',
   });
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+ export const MainScreen: React.FC<MainScreenProps> = ({
+  onSelectArrangement,
+  onBookWorkshop,
+  onNavigatePage,
+}) => {
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [contactData, setContactData] = useState({
+    nombre: '',
+    email: '',
+    asunto: 'Consulta General',
+    mensaje: '',
+  });
+
+  const [isSending, setIsSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!contactData.nombre || !contactData.email) return;
-    setContactSubmitted(true);
+
+    setIsSending(true);
+    setSendError(false);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          subject: `Aurelia Bloom · ${contactData.asunto}`,
+          from_name: contactData.nombre,
+          email: contactData.email,
+          message: contactData.mensaje,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setContactSubmitted(true);
+      } else {
+        setSendError(true);
+      }
+    } catch {
+      setSendError(true);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -388,7 +430,7 @@ export const MainScreen: React.FC<MainScreenProps> = ({
                 </div>
                 <div>
                   <p className="font-ui text-sm font-semibold text-[#1e1b19]">Email</p>
-                  <p className="font-editorial text-sm text-[#564147]">hola@aureliabloom.com</p>
+                  <p className="font-editorial text-sm text-[#564147]">holaaureliabloom@gmail.com</p>
                 </div>
               </div>
 
@@ -522,8 +564,17 @@ export const MainScreen: React.FC<MainScreenProps> = ({
                 </div>
 
                 <button
-                  type="submit"
-                  className="w-full py-4 bg-[#a8295e] text-white rounded-full font-ui text-sm font-semibold hover:translate-y-[-2px] hover:bg-[#912150] transition-all shadow-md shadow-[#a8295e]/15"
+  type="submit"
+  disabled={isSending}
+  className="w-full py-4 bg-[#a8295e] text-white rounded-full font-ui text-sm font-semibold hover:translate-y-[-2px] hover:bg-[#912150] transition-all shadow-md shadow-[#a8295e]/15 disabled:opacity-60 disabled:cursor-not-allowed"
+>
+  {isSending ? 'Enviando...' : 'Enviar Mensaje'}
+</button>
+{sendError && (
+  <p className="text-sm text-red-600 mt-3 text-center">
+    No pudimos enviar tu mensaje. Escríbenos directo a holaaureliabloom@gmail.com
+  </p>
+)}
                 >
                   Enviar Mensaje
                 </button>

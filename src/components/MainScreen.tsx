@@ -336,15 +336,15 @@ export const MainScreen: React.FC<MainScreenProps> = ({
             <div className="pt-8 sm:pt-12">
               <img
                 className="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-lg transition-transform hover:scale-102"
-                alt="Floral workshop hands"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG_EdVXiZIxNPaE95c_qUfNvZDlDFBTFsuy3t6Og_iD7rwBfl06NqBECbNOYL7Sg7wHET5u2q1TbEk5qBMuvQI0-8WJ1ORO6wP8gRL-kKDL14U5co3sjkx243TTfDFTT5T7cIUGJMSIiqSKZ25ADdNISMYPeJtdwoK7D-Fwxt-7oCdrr9H8dvaDiCo7-qrajunuz1KAJ9mEkEt0KviVt6H3pS4FDIDsrp1gi9xNlefI8nMssdk6St3LDKxIJ5FzPw3JlFCqilHnC4"
+                alt="Manos organizando un arreglo floral en el taller"
+                src="https://images.unsplash.com/photo-1628927124199-a8a2a5394392?fm=jpg&q=80&w=1200&auto=format&fit=crop"
               />
             </div>
             <div>
               <img
                 className="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-lg transition-transform hover:scale-102"
-                alt="Flowers on wooden table"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUmTSP1DRT1VqsP0BQmzkR0BjW1Zr4i19_0bpE0uIQWYO9U_pV7EW0VbLDzFQtEW1rjn6E97MhRgI08YtB9M4OAUQKWlJHeuKu9M5X0rz7KcF90lDEei2-d2MU-A3Z0P2vKOj03I-0WZC_x83QxjQpJUR29ag-h21dOTdnA4QpKvcDmZ144k3xM7-A1PC8y3pbH7sv0IlTNBWHY3m-t4TffEF98PzIcBtquhD78kEVJP8l4NcTrfnPNokotVifuINUDTKu1H2v76E"
+                alt="Flores frescas sobre mesa de madera en el taller Aurelia Bloom"
+                src="https://images.unsplash.com/photo-1628761907965-9cc7faee1dc8?fm=jpg&q=80&w=1200&auto=format&fit=crop"
               />
             </div>
           </div>

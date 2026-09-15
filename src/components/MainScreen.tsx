@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GALLERY_DATA, WORKSHOPS_DATA } from '../data/mockData';
 import { GalleryItem, Workshop, ActivePage } from '../types';
 import { formatCOP } from '../utils/currency';
-import heroBgImage from '../assets/images/hero_atelier_florist_1789421637952.jpg';
+const heroBgImage = 'https://images.unsplash.com/photo-1527609635833-38e4a5f7c941?fm=jpg&q=80&w=2000&auto=format&fit=crop';
 import {
   Flower2,
   PartyPopper,

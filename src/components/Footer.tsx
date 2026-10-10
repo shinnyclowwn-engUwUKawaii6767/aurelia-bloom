@@ -67,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({
                 : 'text-[#564147] hover:text-[#a8295e]'
             }`}
           >
-            Sostenibilidad
+            Arreglos Personalizados
           </button>
         </div>
 

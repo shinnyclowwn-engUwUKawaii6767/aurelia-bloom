@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { ActivePage, GalleryItem, Workshop } from './types';
+import { ActivePage, GalleryItem, Workshop, ConsciousArrangementOrder } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { MainScreen } from './components/MainScreen';
@@ -21,15 +21,20 @@ export default function App() {
   const [manifestoOpen, setManifestoOpen] = useState(false);
   const [selectedWorkshop, setSelectedWorkshop] = useState<Workshop | null>(null);
   const [selectedArrangement, setSelectedArrangement] = useState<GalleryItem | null>(null);
-  const [orderConfirmedData, setOrderConfirmedData] = useState<{
-    palette: string;
-    support: string;
-    message: string;
-    price: number;
-  } | null>(null);
+  const [presetArrangement, setPresetArrangement] = useState<GalleryItem | null>(null);
+  const [orderConfirmedData, setOrderConfirmedData] = useState<ConsciousArrangementOrder | null>(null);
   const [faqOpen, setFaqOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [termsOpen, setTermsOpen] = useState(false);
+
+  const handleCustomizeArrangement = (item: GalleryItem) => {
+    setPresetArrangement(item);
+    setActivePage('sostenibilidad');
+    setTimeout(() => {
+      const el = document.getElementById('creador-arreglo');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 150);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#fff8f6] text-[#1e1b19] relative selection:bg-[#a8295e] selection:text-white">
@@ -58,10 +63,13 @@ export default function App() {
           <SustainabilityScreen
             onOpenManifesto={() => setManifestoOpen(true)}
             onOpenOrderConfirmation={(orderData) => setOrderConfirmedData(orderData)}
+            initialPreset={presetArrangement}
+            onClearPreset={() => setPresetArrangement(null)}
           />
         ) : (
           <MainScreen
             onSelectArrangement={(item) => setSelectedArrangement(item)}
+            onCustomizeArrangement={handleCustomizeArrangement}
             onBookWorkshop={(workshop) => setSelectedWorkshop(workshop)}
             onNavigatePage={(page) => {
               setActivePage(page);
@@ -101,13 +109,7 @@ export default function App() {
       <ArrangementModal
         item={selectedArrangement}
         onClose={() => setSelectedArrangement(null)}
-        onOrderCustom={() => {
-          setActivePage('sostenibilidad');
-          setTimeout(() => {
-            const el = document.getElementById('creador-arreglo');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        }}
+        onOrderCustom={handleCustomizeArrangement}
       />
 
       <OrderSuccessModal
